@@ -1,241 +1,106 @@
-# Kaptajn Kaper i Kattegat — Web Remake
+# Kaptajn Kaper i Kattegat
 
-**A modern web-based remake of the classic 1985 Danish privateer trading and naval combat game**, built with **Phaser 3 + TypeScript + Vite**.
+A playable, work-in-progress web remake of Peter Ole Frederiksen's 1985 Danish privateer game. Built with Phaser 3, TypeScript, and Vite, with a Node.js/SQLite leaderboard.
 
-## 🎮 Game Status
+## Project Status
 
-| Phase | Status | Details |
-|-------|--------|---------|
-| **Asset Creation** | ✅ Complete | 5 sprite atlases (player ship, enemies, effects, boarding, UI) with Phaser JSON metadata |
-| **Foundation** | ✅ Complete | Vite + TypeScript + Phaser 3 configured, 9 scene skeletons implemented |
-| **Data Extraction** | ✅ Complete | All game data extracted from original .BAS files into JSON format |
-| **Map Implementation** | ⏳ Next | Tiled tilemap + collision system |
-| **Battle System** | ⏳ Next | Combat mechanics, enemy AI, damage calculations |
-| **Trading System** | ⏳ Next | Harbor UI, buy/sell, crew management |
-| **Polish & Audio** | ⏳ Future | Sound effects, music, responsive UI |
+The core sailing, trading, combat, and leaderboard flows are implemented. This is a playable prototype, not a finished or fully faithful recreation of the original game.
 
-## 📂 Project Structure
+| Area | Current implementation |
+| --- | --- |
+| Presentation | Illustrated title screen, antique-chart surround, animated ship sprites and damage states, scaled 1024x768 game canvas |
+| Languages | Danish and English, switchable during play |
+| Navigation | 30x15 Kattegat map, coastline collision, seven harbors, eight-direction keyboard movement |
+| Sea encounters | Eight enemy ship types and moving storms; contacts advance on sailing turns, enemies chase nearby players, storms damage the hull |
+| Harbors | Entry or decline, trading, crew hiring, ship repairs, quantity input, and return to the previous sea position |
+| Cannon combat | Interactive bearing/elevation aim, wind and range correction, shot feedback, reload lock, closing range, and retreat |
+| Difficulty assistance | Easy/normal starts with calibrated aim and gets stronger player shots and reduced return fire; the sight shows predicted on-target shots |
+| Boarding | Merchant boarding and close-range/damaged-ship boarding, assault/guard/withdraw choices, persistent casualties, capture rewards |
+| Player and scores | Player name, game-over score submission, top-20 leaderboard stored in SQLite, duplicate-run protection |
+| Deployment | Docker development stack and production container serving the game and API |
 
-```
-src/
-  ├── main.ts                     # Phaser game config & startup
-  ├── scenes/                     # Game state machines
-  │   ├── BootScene.ts            # Asset preload
-  │   ├── TitleScene.ts           # Main menu
-  │   ├── IntroStoryScene.ts      # Story intro (Komtesse Julie)
-  │   ├── WorldMapScene.ts        # Tile-based navigation
-  │   ├── BattleScene.ts          # Cannon combat
-  │   ├── BoardingScene.ts        # Optional entring
-  │   ├── HarborApproachScene.ts  # Harbor entry
-  │   ├── HarborTradeScene.ts     # Trading system
-  │   ├── GameOverScene.ts        # Results screen
-  │   └── index.ts                # Scene exports
-  ├── game/
-  │   └── GameState.ts            # Core data model
-  └── data/
-      ├── game-config.json        # Initial resources, prices, limits
-      ├── enemies.json            # 8 enemy ship types with stats
-      ├── map.json                # 30×15 tile map + harbor locations
-      ├── story.json              # Intro, help text, game over conditions
-      └── index.ts                # TypeScript data loaders
+New games currently start with **15 crew, 30 grain, 500 rigsdaler, four cannons, and 100 hull**, at difficulty `1`. These live defaults are defined in [src/game/GameState.ts](src/game/GameState.ts), not the historical values in the extracted data notes.
 
-assets/sprites/
-  ├── ship_player.png/.json       # Player ship (4 damage states × 4 animations)
-  ├── ships_enemy.png/.json       # 8 enemy types (topview + sideview)
-  ├── battle_effects.png/.json    # Cannonballs, splashes, explosions
-  ├── boarding.png/.json          # Dinghy & flags
-  └── ui_atlas.png/.json          # Resource icons & UI elements
+## Run With Docker
 
-CONFIG FILES
-  ├── package.json                # npm dependencies (Phaser, TypeScript, Vite)
-  ├── tsconfig.json               # TypeScript compiler options
-  ├── vite.config.ts              # Vite build configuration
-  ├── index.html                  # HTML entry point
-  └── .gitignore                  # Git configuration
-```
+Install Docker with Compose support; on Windows, start Docker Desktop first.
 
-## 🚀 Quick Start
-
-### Docker Development
-
-With Docker Desktop running:
+### Development
 
 ```bash
 docker compose up -d --build
 ```
 
-Open http://localhost:5173. Stop with `docker compose down`; leaderboard data stays in its Docker volume.
-
-### Prerequisites
-- Node.js 18+ and npm
-
-### Development
+Open http://localhost:5173. Vite reloads source changes automatically, and proxies leaderboard requests to the API container.
 
 ```bash
-npm install
-npm run dev
+docker compose down
 ```
 
-Open http://localhost:3000 in your browser. The dev server will hot-reload as you edit files.
+Scores persist in the `leaderboard-data` Docker volume. Do not use `down -v` unless you intend to delete that data.
 
-### Production Build
+### Production
 
 ```bash
-npm run build
+docker compose -f docker-compose.prod.yml up -d --build
 ```
 
-Output goes to `dist/`, ready to deploy to GitHub Pages, Netlify, or Vercel.
+Open http://localhost:8080. The production container serves both the built frontend and the SQLite API using Node.js 24. It also persists scores in a Docker volume.
 
-## 📖 Game Data
+The leaderboard requires a running API and persistent database storage. Uploading only the static build to GitHub Pages does not provide a working leaderboard. Internet-facing deployments also need HTTPS and appropriate abuse controls.
 
-All game data has been extracted from the original 1985 BASIC source code and converted to JSON:
+## Development Checks
 
-### Core Configuration (`src/data/game-config.json`)
-- Initial resources: 200 crew, 30 grain, 600 rigsdaler, 4 cannons
-- 7 harbors with coordinates and names
-- Price tables for goods and services
-- Win conditions: 500 points or 325 turns
-- Resource caps (crew: 500, grain: 700, rigsdaler: 30,000)
-
-### Enemy Ships (`src/data/enemies.json`)
-8 canonical enemy types extracted from `KAPER.BAS` lines 840-910:
-1. **Handelsmand** (Merchant) — 5 cannons, 80 crew, 150 rigsdaler
-2. **Troppetransport** — 10 cannons, 480 crew, 600 rigsdaler
-3. **Kanonbåd** (Cannon Boat) — 2 cannons, 40 crew, 150 rigsdaler
-4. **Galease** — 15 cannons, 140 crew, 450 rigsdaler
-5. **Brig** — 6 cannons, 50 crew, 200 rigsdaler
-6. **Skonnert** — 1 cannon, 10 crew, 30 rigsdaler
-7. **Orlogsmand** (Warship) — 50 cannons, 140 crew, 900 rigsdaler
-8. **Sørøverskib** (Pirate) — 70 cannons, 200 crew, 1500 rigsdaler
-
-### Map (`src/data/map.json`)
-- **30×15 tiles** covering the Kattegat region around Denmark
-- **112 land tiles** for collision detection
-- **7 harbors** with coordinates: København, Helsingør, Hundested, Grenå, Ebeltoft, Kalundborg, Mølle
-
-### Story & Help (`src/data/story.json`)
-- Full intro story (Komtesse Julie, Kaperbrev, English invasion)
-- Navigation & combat guides
-- Crew management mechanics
-- Trading system description
-- Game over conditions
-
-See [`DATA_EXTRACTION.md`](DATA_EXTRACTION.md) for detailed source references and game formulas.
-
-## 🎮 Gameplay Loop
-
-1. **Title Screen** — New game or highscore
-2. **Intro Story** — Historical context and romantic motivation
-3. **World Map** — Navigate 8-directionally, encounter random enemies
-4. **Battle** — Cannon duel or boarding action
-5. **Harbors** — Buy/sell goods, hire crew, repair ship
-6. **Victory/Defeat** — Reach 500 points to be ennobled and marry Komtesse Julie, or lose to combat/starvation/time
-
-## 🔧 Architecture
-
-### GameState Model (`src/game/GameState.ts`)
-Pure TypeScript data model, independent of rendering:
-- Resources: crew, grain, rigsdaler, cannons
-- Ship condition: hullIntegrity (0-100%), damage state
-- Progress: score, turns elapsed, current map position
-- Helper functions: `getHullDamageLevel()`, `applyHullDamage()`, `canSail()`, etc.
-
-### Scene Management (Phaser)
-Each major game phase is a Phaser `Scene`:
-- `BootScene` → `TitleScene` → `IntroStoryScene` → `WorldMapScene` (main loop)
-- Encounters trigger `BattleScene` → back to `WorldMapScene`
-- Harbor entry triggers `HarborApproachScene` → `HarborTradeScene` → back to `WorldMapScene`
-- Win/lose conditions → `GameOverScene`
-
-### Data Loaders (`src/data/index.ts`)
-TypeScript helpers for type-safe data access:
-```typescript
-import { getEnemyTypes, getRandomEnemy, getMapData, getHarbors } from '../data'
-
-const enemies = getEnemyTypes()           // Enemy[]
-const foe = getRandomEnemy()              // Enemy
-const map = getMapData()                  // MapData
-const ports = getHarbors()                // Harbor[]
-```
-
-## 🎨 Sprite Assets
-
-All spritesheets are **Phaser 3 JSON atlases** with embedded animation metadata:
-
-| Asset | Frames | Use |
-|-------|--------|-----|
-| `ship_player.png` | 16 | Player ship: 4 damage states × 4 rocking animations |
-| `ships_enemy.png` | 16 | 8 enemy types: topview (map) + sideview (battle) |
-| `battle_effects.png` | 12 | Cannonball, splash (4-frame), explosion (6-frame), crosshair |
-| `boarding.png` | 12 | Dinghy, Dannebrog flag, Jolly Roger |
-| `ui_atlas.png` | 28 | Resource icons (crew, grain, cannon, coins, repair, gems), compass, wind |
-
-Pixel art uses **20-32 color retro palette** with **no antialiasing**. All assets regenerable with PowerShell scripts in `tools/`.
-
-## 📚 Documentation
-
-- [`DATA_EXTRACTION.md`](DATA_EXTRACTION.md) — Detailed source references, extracted formulas
-- [original-source/README.md](original-source/README.md) - Original BASIC source notes
-
-## 🛠 Type Checking & Linting
+With the development containers running:
 
 ```bash
-npm run type-check      # Run TypeScript compiler
-npm run lint            # Run ESLint
+docker compose exec -T kaptajn-kaper-dev npx tsx --test scripts/localization.test.ts scripts/map.test.ts scripts/sea-encounters.test.ts scripts/interactive-combat.test.ts
+docker compose exec -T -e NODE_OPTIONS=--max-old-space-size=3072 kaptajn-kaper-dev npm run build
 ```
 
-## 🎯 Configuration
+The build writes to `dist/`. Phaser can produce a large-bundle warning. A successful Vite build does not mean the separate TypeScript check passed.
 
-### Game Settings (`vite.config.ts`)
-- Resolution: 1024×768 (4:3 classic arcade)
-- Pixel art mode enabled (nearest-neighbor filtering)
-- Arcade physics for ship movement
+The API tests require Node.js 24 for native SQLite. From the project root, Docker can run them against temporary test databases:
 
-### Phaser Config (`src/main.ts`)
-- 9 scenes in boot order
-- Physics: Arcade (gravity: 0)
-- Rendering: Auto-detect (Canvas/WebGL) with pixelArt: true
+```bash
+docker run --rm --mount "type=bind,source=.,target=/app,readonly" -w /app node:24-alpine node --test server/server.test.mjs
+```
 
-## 📋 Current Limitations
+[scripts/](scripts/) also contains browser regression checks for trading quantities, harbor return, sea encounters, battle graphics, interactive combat, and leaderboard behavior. They run inside the live application; they are not a single automated end-to-end test command.
 
-- Map rendered as placeholder grid (will be replaced by Tiled tilemap)
-- Battle is simplified (no wind/distance calculation yet)
-- Harbor approach has no steering minigame yet
-- No sound/music yet
-- No localStorage highscore persistence yet
-- No touch controls yet (keyboard only)
+Repository-wide `npm run type-check` and `npm run lint` are available as scripts, but are not currently established as clean release gates. Known type-check issues remain, and the lint script has no checked-in ESLint configuration.
 
-## 🔄 Roadmap
+## Project Layout
 
-### Immediate (Next Phase)
-1. Implement real tile-based world map with Tiled/Phaser tilemap
-2. Add proper collision detection (land, harbor approach)
-3. Implement full combat system (cannon fire, distance, wind, accuracy)
-4. Build harbor trading UI
+| Location | Purpose |
+| --- | --- |
+| [src/main.ts](src/main.ts) | Phaser configuration and scene registration |
+| [src/scenes/](src/scenes/) | Title, story, sailing, harbor, trading, battle, boarding, and game-over screens |
+| [src/game/](src/game/) | Game state, combat, trading, and sea encounter rules |
+| [src/data/](src/data/) | Map, enemy, story, and economy data |
+| [src/i18n.ts](src/i18n.ts) and [src/locales.ts](src/locales.ts) | Language selection and Danish/English strings |
+| [public/assets/](public/assets/) | Runtime artwork, sprite atlases, and tilesets |
+| [server/](server/) | HTTP API, SQLite storage, and API tests |
+| [scripts/](scripts/) | Regression checks and boarding asset generator |
+| [tools/](tools/) | PowerShell sprite generators |
+| [original-source/](original-source/) | Preserved BASIC source and original title data |
 
-### Medium Term
-1. Boarding minigame (crew combat)
-2. Prize delivery system
-3. Crew morale and starvation mechanics
-4. Crew disease outbreaks
+The live map is generated from [src/data/map.json](src/data/map.json). Legacy TMJ files remain in the repository but are not the active map source. Some asset sources are duplicated under [assets/](assets/) for the generation workflow.
 
-### Long Term
-1. Sound effects and music (Web Audio API)
-2. Full responsive layout (mobile touch controls)
-3. Highscore leaderboard (localStorage)
-4. Settings (difficulty, sound toggle)
-5. Visual polish (animations, screen transitions)
+## Remaining Work
 
-## 📝 License
+- Sound effects and music.
+- Complete touch navigation and trading controls. Some actions support pointer input and the canvas scales to mobile, but a keyboard is still needed for the full game.
+- Save/resume for an active voyage. Stored names and leaderboard scores are not saved games.
+- Original-game prize crews and captured-ship delivery, crew disease events, and a harbor steering minigame.
+- Further combat and economy balancing, especially boarding with a small starting crew.
+- Clean repository-wide type-check/lint gates and a unified browser test runner.
+- Leaderboard anti-cheat and rate limiting. Input validation, prepared SQL statements, request-size limits, and origin checks are implemented, but scores are still reported by the client and are not authoritative.
 
-MIT (modern web version) — Original game © 1985 Peter Ole Frederiksen, preserved under GNU GPL v3.
+## Source Notes And License
 
-See [original-source/README.md](original-source/README.md) for the original source documentation.
+[DATA_EXTRACTION.md](DATA_EXTRACTION.md) and [original-source/README.md](original-source/README.md) preserve extraction and source notes. They describe historical data and early implementation assumptions, not necessarily the current gameplay rules. The BASIC source remains the reference for original behavior.
 
-## 🙏 Credits
+The repository's [LICENSE](LICENSE) contains **GNU GPL version 3**. [package.json](package.json) currently declares `MIT`; this licensing metadata mismatch needs clarification before describing the remake as MIT-licensed. This README does not change either license file or package metadata.
 
-- **Original Game**: Peter Ole Frederiksen (1985)
-- **Web Remake**: 2024
-- **Source Preservation**: Det Kgl. Bibliotek (Royal Danish Library) via Thorbjørn Stegelmann
-- **Sprite Assets**: Generated with GPT-6-Astra
-- **Framework**: Phaser 3 + TypeScript + Vite
+Original game: Peter Ole Frederiksen (1985). Source preservation: Det Kgl. Bibliotek (Royal Danish Library), via Thorbjørn Stegelmann.
