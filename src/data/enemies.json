@@ -1,0 +1,103 @@
+{
+  "version": "1.0",
+  "title": "Enemy Ship Types - Kaptajn Kaper i Kattegat",
+  "description": "8 enemy ship types with stats (cannons, crew, treasure, grain)",
+  "enemyTypes": [
+    {
+      "id": 1,
+      "name": "Handelsmand",
+      "type": "Merchant",
+      "cannons": 5,
+      "crew": 80,
+      "rigsdaler": 150,
+      "grain": 30,
+      "difficulty": 1,
+      "points": 50,
+      "description": "A merchant vessel with light armament"
+    },
+    {
+      "id": 2,
+      "name": "Troppetransport",
+      "type": "Troop Transport",
+      "cannons": 10,
+      "crew": 480,
+      "rigsdaler": 600,
+      "grain": 15,
+      "difficulty": 2,
+      "points": 100,
+      "description": "A large transport carrying soldiers"
+    },
+    {
+      "id": 3,
+      "name": "Kanonbåd",
+      "type": "Cannon Boat",
+      "cannons": 2,
+      "crew": 40,
+      "rigsdaler": 150,
+      "grain": 4,
+      "difficulty": 1,
+      "points": 40,
+      "description": "A small but well-armed boat"
+    },
+    {
+      "id": 4,
+      "name": "Galease",
+      "type": "Galleas",
+      "cannons": 15,
+      "crew": 140,
+      "rigsdaler": 450,
+      "grain": 5,
+      "difficulty": 3,
+      "points": 150,
+      "description": "A large warship with heavy cannons"
+    },
+    {
+      "id": 5,
+      "name": "Brig",
+      "type": "Brig",
+      "cannons": 6,
+      "crew": 50,
+      "rigsdaler": 200,
+      "grain": 4,
+      "difficulty": 2,
+      "points": 75,
+      "description": "A two-masted merchant ship"
+    },
+    {
+      "id": 6,
+      "name": "Skonnert",
+      "type": "Schooner",
+      "cannons": 1,
+      "crew": 10,
+      "rigsdaler": 30,
+      "grain": 1,
+      "difficulty": 1,
+      "points": 20,
+      "description": "A small schooner with minimal weapons"
+    },
+    {
+      "id": 7,
+      "name": "Orlogsmand",
+      "type": "Warship/Navy",
+      "cannons": 50,
+      "crew": 140,
+      "rigsdaler": 900,
+      "grain": 20,
+      "difficulty": 4,
+      "points": 300,
+      "description": "A royal navy warship with formidable firepower"
+    },
+    {
+      "id": 8,
+      "name": "Sørøverskib",
+      "type": "Pirate Ship",
+      "cannons": 70,
+      "crew": 200,
+      "rigsdaler": 1500,
+      "grain": 12,
+      "difficulty": 5,
+      "points": 500,
+      "description": "A fearsome pirate vessel with heavy armament"
+    }
+  ]
+}

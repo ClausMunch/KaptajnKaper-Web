@@ -1,0 +1,73 @@
+services:
+  kaptajn-kaper-api:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    volumes:
+      - leaderboard-data:/data
+    networks:
+      - kaptajn-network
+    restart: unless-stopped
+
+  kaptajn-kaper-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kaptajn-kaper-dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - API_UPSTREAM=http://kaptajn-kaper-api:8080
+    depends_on:
+      - kaptajn-kaper-api
+    command: npm run dev -- --host 0.0.0.0 --port 5173
+    networks:
+      - kaptajn-network
+
+  kaptajn-kaper-build:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kaptajn-kaper-build
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=production
+    command: npm run build
+    networks:
+      - kaptajn-network
+    profiles:
+      - build
+
+  kaptajn-kaper-preview:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kaptajn-kaper-preview
+    ports:
+      - "4173:4173"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=production
+    command: npm run preview
+    networks:
+      - kaptajn-network
+    depends_on:
+      - kaptajn-kaper-build
+      - kaptajn-kaper-api
+    profiles:
+      - preview
+
+networks:
+  kaptajn-network:
+    driver: bridge
+
+volumes:
+  leaderboard-data:

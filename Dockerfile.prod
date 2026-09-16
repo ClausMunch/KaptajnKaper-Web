@@ -1,0 +1,40 @@
+# Kaptajn Kaper i Kattegat - Production Build
+# Multi-stage build for optimized production container
+
+# Stage 1: Build
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+
+# Copy package files
+COPY package.json package-lock.json* ./
+
+# Install dependencies
+RUN npm ci
+
+# Copy project
+COPY . .
+
+# Build for production
+RUN NODE_OPTIONS=--max-old-space-size=3072 npm run build
+
+# Stage 2: Runtime
+FROM node:24-alpine
+
+WORKDIR /app
+
+COPY server/server.mjs ./server/server.mjs
+RUN mkdir /data && chown node:node /data
+USER node
+
+# Copy built files from builder
+COPY --from=builder /app/dist ./dist
+
+# Expose port
+EXPOSE 8080
+
+# Health check
+HEALTHCHECK --interval=10s --timeout=5s --start-period=5s --retries=3 \
+  CMD wget -q -O- http://localhost:8080 || exit 1
+
+CMD ["node", "server/server.mjs"]

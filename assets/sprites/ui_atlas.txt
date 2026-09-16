@@ -1,0 +1,77 @@
+KAPTAJN KAPER - UI ATLAS
+=======================
+
+Original pixel artwork: 512 x 256 RGBA PNG, 28-color shared palette.
+Style: 16-bit nautical; dark ink outlines, brass, navy, parchment, upper-left lighting.
+No antialiasing; alpha is 0 or 255. Frames are untrimmed and never rotated.
+At least 4 transparent pixels separate frame rectangles. No edge extrusion.
+
+NAMING
+Lowercase ASCII snake_case, no filename suffix on frame keys.
+icon_<resource>: 32x32 resource icons; English stable keys, Danish UI labels.
+button_<shape>_<state>: normal, hover, pressed, disabled; labels are separate.
+panel_<material_or_role>: backgrounds; target_<kind>[_locked]: aiming overlays.
+compass_rose / wind_<kind>: navigation; glyph_<action>: 16x16 control overlays.
+
+FRAME REFERENCE (size; atlas x,y; purpose)
+icon_crew (32x32; 4,4): Mandskab: two sailors; crew count, recruitment and boarding strength.
+icon_grain (32x32; 44,4): Korn / proviant: tied grain sack and wheat; food stores and provisions trade.
+icon_cannon (32x32; 84,4): Kanon: iron cannon on a wooden carriage; armament count and cannon purchases.
+icon_coin (32x32; 124,4): Rigsdaler: gold crown-stamped coin and stack; money and prices.
+icon_repair (32x32; 164,4): Reparation: shipwright hammer over a plank; hull repair and maintenance.
+icon_jewels (32x32; 204,4): Juveler: faceted ruby and emerald; treasure, loot and jewel sales.
+target_crosshair (32x32; 244,4): Neutral aiming reticle; open center at (16,16) leaves the target visible.
+target_crosshair_locked (32x32; 284,4): Coral aiming reticle for a selected or locked target; same alignment as neutral.
+button_square_normal (32x32; 324,4): Unlabelled square button, normal state; place a glyph or icon above it.
+button_primary_normal (96x32; 4,124): Unlabelled text/action button, normal state; overlay localized text.
+button_square_hover (32x32; 364,4): Unlabelled square button, hover state; place a glyph or icon above it.
+button_primary_hover (96x32; 108,124): Unlabelled text/action button, hover state; overlay localized text.
+button_square_pressed (32x32; 404,4): Unlabelled square button, pressed state; place a glyph or icon above it.
+button_primary_pressed (96x32; 212,124): Unlabelled text/action button, pressed state; overlay localized text.
+button_square_disabled (32x32; 444,4): Unlabelled square button, disabled state; place a glyph or icon above it.
+button_primary_disabled (96x32; 4,164): Unlabelled text/action button, disabled state; overlay localized text.
+compass_rose (64x64; 4,48): Brass compass with N/E/S/W marks; fixed north-up navigation dial, center (32,32).
+wind_arrow (32x32; 76,48): Wind direction pointer; points north/up at rotation 0, rotates clockwise around (16,16).
+wind_calm (32x32; 116,48): Calm wind marker; display instead of the directional pointer when wind speed is zero.
+glyph_plus (16x16; 76,88): Small plus overlay for quantity controls, navigation, dismissal or confirmation.
+glyph_minus (16x16; 100,88): Small minus overlay for quantity controls, navigation, dismissal or confirmation.
+glyph_close (16x16; 124,88): Small close overlay for quantity controls, navigation, dismissal or confirmation.
+glyph_left (16x16; 148,88): Small left overlay for quantity controls, navigation, dismissal or confirmation.
+glyph_right (16x16; 172,88): Small right overlay for quantity controls, navigation, dismissal or confirmation.
+glyph_check (16x16; 196,88): Small check overlay for quantity controls, navigation, dismissal or confirmation.
+panel_navy (160x96; 344,48): Dark brass-framed panel for combat, inventory and dialogs; use light text.
+panel_parchment (160x96; 344,152): Parchment brass-framed panel for harbor trading, prices and messages; use dark text.
+panel_resource_bar (224x80; 108,164): Wide navy resource/status panel; use light text and the six resource icons.
+
+PHASER 3 INTEGRATION
+Preload: this.load.atlas('ui', 'assets/sprites/ui_atlas.png', 'assets/sprites/ui_atlas.json');
+Create:  this.add.image(24, 24, 'ui', 'icon_coin');
+Use pixelArt: true, antialias: false, roundPixels: true in the game config.
+Prefer integer positions and integer scaling (1x, 2x, 3x); avoid linear filtering.
+Paths above are browser URLs, relative to the deployed web root.
+The atlas uses the Phaser-compatible TexturePacker JSON hash format.
+
+BUTTONS AND PANELS
+No baked-in text: use a font supporting Danish U+00E6, U+00F8, U+00E5 and uppercase forms.
+Primary button text-safe rectangle: x=12, y=8, w=72, h=16.
+Square buttons: center a 16x16 glyph; move label/glyph down 1 pixel when pressed.
+Disabled artwork is visual only: disable input in game code too.
+Panels: leave 16 pixels of content padding on all four edges.
+Nine-slice borders: buttons 8 pixels per side; panels 12 pixels per side.
+Phaser 3.60+ example (width, height, left, right, top, bottom):
+this.add.nineslice(200, 150, 'ui', 'panel_navy', 240, 144, 12, 12, 12, 12);
+Use native sizes or nine-slicing to preserve corner detail; do not stretch whole panels.
+
+AIMING AND WIND
+Crosshairs share a (16,16) center with a transparent opening; use origin (0.5,0.5).
+Place wind_arrow at the compass center with origin (0.5,0.5).
+Angle convention: 0=north/up, 90=east/right, 180=south, 270=west.
+The arrow indicates where wind blows TO. Add 180 degrees for FROM bearings.
+Show wind_calm instead of wind_arrow at zero wind speed.
+Rotation at arbitrary angles may introduce pixel shimmer; prefer 45-degree steps.
+Compass W is international west (Danish vest); the dial stays north-up.
+
+REGENERATION
+Windows PowerShell with built-in System.Drawing; no third-party dependencies.
+From repository root: powershell -NoProfile -File .\tools\Generate-UiAtlas.ps1
+Regenerates PNG, JSON and this reference together. Original BASIC assets are untouched.

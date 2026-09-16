@@ -1,0 +1,64 @@
+BOARDING SPRITES — Kaptajn Kaper i Kattegat
+
+boarding.png: 256 x 128, transparent RGBA PNG, 19 opaque palette colors.
+boarding.json: Phaser 3 / TexturePacker-compatible JSON hash atlas.
+New pixel artwork: warm wooden rowing dinghy, Danish Dannebrog (Jack),
+and black pirate Jolly Roger with an ivory skull and crossed bones.
+Hard pixel edges, no antialiasing; use nearest-neighbor, integer scaling.
+Crew figures and sword combat animations are deferred to v2.
+
+LAYOUT AND ANIMATIONS
+Frame names                 Count  Size    Sheet positions       Loop
+dinghy_row_0 .. _3             4    64x32   x=0,64,128,192; y=0    6 fps
+flag_dannebrog_0 .. _3         4    64x48   x=0,64,128,192; y=32   8 fps
+flag_jolly_roger_0 .. _3       4    64x48   x=0,64,128,192; y=80   8 fps
+
+All sequences play 0,1,2,3, repeat forever; frame 0 also works statically.
+Dinghy: side/three-quarter view, bow to the right, two pairs of moving
+oars, one-pixel bob, and small water ripples (included in each frame).
+Flags: fixed pole on the left, cloth flies right. Emblems deform with
+the four-phase cloth wave. Danish cross is offset toward the hoist.
+All frames are untrimmed, unrotated, with transparent margins. Do not
+treat this mixed-size atlas as a uniform Phaser spritesheet.
+
+ANCHORS (also encoded in each atlas frame's normalized pivot)
+Dinghy: (32,26), origin (0.5,0.8125), at the central waterline.
+Flags: (9.5,44), origin (0.1484375,44/48), at the pole foot.
+These fixed anchors avoid animation jitter. Position the two flags
+independently of the dinghy; flags are not baked into the boat sprite.
+Phaser reads atlas pivots; explicit setOrigin below documents placement.
+
+PHASER 3 EXAMPLE
+// Game config: pixelArt: true, roundPixels: true
+// Scene.preload:
+this.load.atlas('boarding',
+  'assets/sprites/boarding.png', 'assets/sprites/boarding.json');
+
+// Scene.create (register animation keys once):
+for (const [prefix, frameRate] of [
+  ['dinghy_row', 6], ['flag_dannebrog', 8], ['flag_jolly_roger', 8]
+]) {
+  if (!this.anims.exists(prefix)) {
+    this.anims.create({
+      key: prefix,
+      frames: this.anims.generateFrameNames('boarding', {
+        prefix: prefix + '_', start: 0, end: 3
+      }),
+      frameRate,
+      repeat: -1
+    });
+  }
+}
+this.add.sprite(160, 180, 'boarding', 'dinghy_row_0')
+  .setOrigin(0.5, 0.8125).setScale(2).play('dinghy_row');
+this.add.sprite(70, 100, 'boarding', 'flag_dannebrog_0')
+  .setOrigin(0.1484375, 44 / 48).setScale(2).play('flag_dannebrog');
+this.add.sprite(250, 100, 'boarding', 'flag_jolly_roger_0')
+  .setOrigin(0.1484375, 44 / 48).setScale(2).play('flag_jolly_roger');
+
+REBUILD
+From the repository root on Windows (PowerShell and System.Drawing):
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\generate-boarding.ps1
+No downloaded art, fonts, packages, or external image services required.
+The generator writes only boarding.png and boarding.json beside this file.
+This artwork is part of the repository and uses its license; see LICENSE.

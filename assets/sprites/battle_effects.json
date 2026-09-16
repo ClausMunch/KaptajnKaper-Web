@@ -1,0 +1,303 @@
+{
+    "frames":  {
+                   "cannonball":  {
+                                      "frame":  {
+                                                    "x":  0,
+                                                    "y":  0,
+                                                    "w":  32,
+                                                    "h":  32
+                                                },
+                                      "rotated":  false,
+                                      "trimmed":  false,
+                                      "spriteSourceSize":  {
+                                                               "x":  0,
+                                                               "y":  0,
+                                                               "w":  32,
+                                                               "h":  32
+                                                           },
+                                      "sourceSize":  {
+                                                         "w":  32,
+                                                         "h":  32
+                                                     },
+                                      "pivot":  {
+                                                    "x":  0.5,
+                                                    "y":  0.5
+                                                }
+                                  },
+                   "crosshair":  {
+                                     "frame":  {
+                                                   "x":  32,
+                                                   "y":  0,
+                                                   "w":  32,
+                                                   "h":  32
+                                               },
+                                     "rotated":  false,
+                                     "trimmed":  false,
+                                     "spriteSourceSize":  {
+                                                              "x":  0,
+                                                              "y":  0,
+                                                              "w":  32,
+                                                              "h":  32
+                                                          },
+                                     "sourceSize":  {
+                                                        "w":  32,
+                                                        "h":  32
+                                                    },
+                                     "pivot":  {
+                                                   "x":  0.5,
+                                                   "y":  0.5
+                                               }
+                                 },
+                   "splash_00":  {
+                                     "frame":  {
+                                                   "x":  0,
+                                                   "y":  32,
+                                                   "w":  32,
+                                                   "h":  32
+                                               },
+                                     "rotated":  false,
+                                     "trimmed":  false,
+                                     "spriteSourceSize":  {
+                                                              "x":  0,
+                                                              "y":  0,
+                                                              "w":  32,
+                                                              "h":  32
+                                                          },
+                                     "sourceSize":  {
+                                                        "w":  32,
+                                                        "h":  32
+                                                    },
+                                     "pivot":  {
+                                                   "x":  0.5,
+                                                   "y":  0.8125
+                                               }
+                                 },
+                   "splash_01":  {
+                                     "frame":  {
+                                                   "x":  32,
+                                                   "y":  32,
+                                                   "w":  32,
+                                                   "h":  32
+                                               },
+                                     "rotated":  false,
+                                     "trimmed":  false,
+                                     "spriteSourceSize":  {
+                                                              "x":  0,
+                                                              "y":  0,
+                                                              "w":  32,
+                                                              "h":  32
+                                                          },
+                                     "sourceSize":  {
+                                                        "w":  32,
+                                                        "h":  32
+                                                    },
+                                     "pivot":  {
+                                                   "x":  0.5,
+                                                   "y":  0.8125
+                                               }
+                                 },
+                   "splash_02":  {
+                                     "frame":  {
+                                                   "x":  64,
+                                                   "y":  32,
+                                                   "w":  32,
+                                                   "h":  32
+                                               },
+                                     "rotated":  false,
+                                     "trimmed":  false,
+                                     "spriteSourceSize":  {
+                                                              "x":  0,
+                                                              "y":  0,
+                                                              "w":  32,
+                                                              "h":  32
+                                                          },
+                                     "sourceSize":  {
+                                                        "w":  32,
+                                                        "h":  32
+                                                    },
+                                     "pivot":  {
+                                                   "x":  0.5,
+                                                   "y":  0.8125
+                                               }
+                                 },
+                   "splash_03":  {
+                                     "frame":  {
+                                                   "x":  96,
+                                                   "y":  32,
+                                                   "w":  32,
+                                                   "h":  32
+                                               },
+                                     "rotated":  false,
+                                     "trimmed":  false,
+                                     "spriteSourceSize":  {
+                                                              "x":  0,
+                                                              "y":  0,
+                                                              "w":  32,
+                                                              "h":  32
+                                                          },
+                                     "sourceSize":  {
+                                                        "w":  32,
+                                                        "h":  32
+                                                    },
+                                     "pivot":  {
+                                                   "x":  0.5,
+                                                   "y":  0.8125
+                                               }
+                                 },
+                   "explosion_00":  {
+                                        "frame":  {
+                                                      "x":  0,
+                                                      "y":  64,
+                                                      "w":  32,
+                                                      "h":  32
+                                                  },
+                                        "rotated":  false,
+                                        "trimmed":  false,
+                                        "spriteSourceSize":  {
+                                                                 "x":  0,
+                                                                 "y":  0,
+                                                                 "w":  32,
+                                                                 "h":  32
+                                                             },
+                                        "sourceSize":  {
+                                                           "w":  32,
+                                                           "h":  32
+                                                       },
+                                        "pivot":  {
+                                                      "x":  0.5,
+                                                      "y":  0.625
+                                                  }
+                                    },
+                   "explosion_01":  {
+                                        "frame":  {
+                                                      "x":  32,
+                                                      "y":  64,
+                                                      "w":  32,
+                                                      "h":  32
+                                                  },
+                                        "rotated":  false,
+                                        "trimmed":  false,
+                                        "spriteSourceSize":  {
+                                                                 "x":  0,
+                                                                 "y":  0,
+                                                                 "w":  32,
+                                                                 "h":  32
+                                                             },
+                                        "sourceSize":  {
+                                                           "w":  32,
+                                                           "h":  32
+                                                       },
+                                        "pivot":  {
+                                                      "x":  0.5,
+                                                      "y":  0.625
+                                                  }
+                                    },
+                   "explosion_02":  {
+                                        "frame":  {
+                                                      "x":  64,
+                                                      "y":  64,
+                                                      "w":  32,
+                                                      "h":  32
+                                                  },
+                                        "rotated":  false,
+                                        "trimmed":  false,
+                                        "spriteSourceSize":  {
+                                                                 "x":  0,
+                                                                 "y":  0,
+                                                                 "w":  32,
+                                                                 "h":  32
+                                                             },
+                                        "sourceSize":  {
+                                                           "w":  32,
+                                                           "h":  32
+                                                       },
+                                        "pivot":  {
+                                                      "x":  0.5,
+                                                      "y":  0.625
+                                                  }
+                                    },
+                   "explosion_03":  {
+                                        "frame":  {
+                                                      "x":  96,
+                                                      "y":  64,
+                                                      "w":  32,
+                                                      "h":  32
+                                                  },
+                                        "rotated":  false,
+                                        "trimmed":  false,
+                                        "spriteSourceSize":  {
+                                                                 "x":  0,
+                                                                 "y":  0,
+                                                                 "w":  32,
+                                                                 "h":  32
+                                                             },
+                                        "sourceSize":  {
+                                                           "w":  32,
+                                                           "h":  32
+                                                       },
+                                        "pivot":  {
+                                                      "x":  0.5,
+                                                      "y":  0.625
+                                                  }
+                                    },
+                   "explosion_04":  {
+                                        "frame":  {
+                                                      "x":  0,
+                                                      "y":  96,
+                                                      "w":  32,
+                                                      "h":  32
+                                                  },
+                                        "rotated":  false,
+                                        "trimmed":  false,
+                                        "spriteSourceSize":  {
+                                                                 "x":  0,
+                                                                 "y":  0,
+                                                                 "w":  32,
+                                                                 "h":  32
+                                                             },
+                                        "sourceSize":  {
+                                                           "w":  32,
+                                                           "h":  32
+                                                       },
+                                        "pivot":  {
+                                                      "x":  0.5,
+                                                      "y":  0.625
+                                                  }
+                                    },
+                   "explosion_05":  {
+                                        "frame":  {
+                                                      "x":  32,
+                                                      "y":  96,
+                                                      "w":  32,
+                                                      "h":  32
+                                                  },
+                                        "rotated":  false,
+                                        "trimmed":  false,
+                                        "spriteSourceSize":  {
+                                                                 "x":  0,
+                                                                 "y":  0,
+                                                                 "w":  32,
+                                                                 "h":  32
+                                                             },
+                                        "sourceSize":  {
+                                                           "w":  32,
+                                                           "h":  32
+                                                       },
+                                        "pivot":  {
+                                                      "x":  0.5,
+                                                      "y":  0.625
+                                                  }
+                                    }
+               },
+    "meta":  {
+                 "app":  "KaptajnKaper original pixel-art generator",
+                 "version":  "1.0",
+                 "image":  "battle_effects.png",
+                 "format":  "RGBA8888",
+                 "size":  {
+                              "w":  128,
+                              "h":  128
+                          },
+                 "scale":  "1"
+             }
+}

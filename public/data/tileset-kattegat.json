@@ -1,0 +1,455 @@
+{
+  "firstgid": 1,
+  "name": "tileset-kattegat",
+  "tilewidth": 32,
+  "tileheight": 32,
+  "tilecount": 16,
+  "columns": 8,
+  "image": "tileset-kattegat.png",
+  "imagewidth": 256,
+  "imageheight": 64,
+  "margin": 0,
+  "spacing": 0,
+  "tiles": [
+    {
+      "id": 0,
+      "type": "water",
+      "properties": [
+        {
+          "name": "passable",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "name": "collision",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "Water (calm)"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "type": "water",
+      "properties": [
+        {
+          "name": "passable",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "name": "collision",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "Water (wave 1)"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "water",
+      "properties": [
+        {
+          "name": "passable",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "name": "collision",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "Water (wave 2)"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "water",
+      "properties": [
+        {
+          "name": "passable",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "name": "collision",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "Water (wave 3)"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "water",
+      "properties": [
+        {
+          "name": "passable",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "name": "collision",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "Water (light calm)"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "water",
+      "properties": [
+        {
+          "name": "passable",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "name": "collision",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "Water (light wave 1)"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "water",
+      "properties": [
+        {
+          "name": "passable",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "name": "collision",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "Water (light wave 2)"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "type": "water",
+      "properties": [
+        {
+          "name": "passable",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "name": "collision",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "Water (light wave 3)"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "type": "land",
+      "properties": [
+        {
+          "name": "passable",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "name": "collision",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "Sand"
+        }
+      ],
+      "objectgroup": {
+        "objects": [
+          {
+            "id": 1,
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "type": "collision",
+            "visible": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 9,
+      "type": "land",
+      "properties": [
+        {
+          "name": "passable",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "name": "collision",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "Rock"
+        }
+      ],
+      "objectgroup": {
+        "objects": [
+          {
+            "id": 1,
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "type": "collision",
+            "visible": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 10,
+      "type": "land",
+      "properties": [
+        {
+          "name": "passable",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "name": "collision",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "Grass"
+        }
+      ],
+      "objectgroup": {
+        "objects": [
+          {
+            "id": 1,
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "type": "collision",
+            "visible": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 11,
+      "type": "land",
+      "properties": [
+        {
+          "name": "passable",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "name": "collision",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "Sand (dark)"
+        }
+      ],
+      "objectgroup": {
+        "objects": [
+          {
+            "id": 1,
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "type": "collision",
+            "visible": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 12,
+      "type": "land",
+      "properties": [
+        {
+          "name": "passable",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "name": "collision",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "Rock (variant)"
+        }
+      ],
+      "objectgroup": {
+        "objects": [
+          {
+            "id": 1,
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "type": "collision",
+            "visible": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 13,
+      "type": "land",
+      "properties": [
+        {
+          "name": "passable",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "name": "collision",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "Grass (variant)"
+        }
+      ],
+      "objectgroup": {
+        "objects": [
+          {
+            "id": 1,
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "type": "collision",
+            "visible": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 14,
+      "type": "land",
+      "properties": [
+        {
+          "name": "passable",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "name": "collision",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "Sand (beach)"
+        }
+      ],
+      "objectgroup": {
+        "objects": [
+          {
+            "id": 1,
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "type": "collision",
+            "visible": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 15,
+      "type": "land",
+      "properties": [
+        {
+          "name": "passable",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "name": "collision",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "value": "Rock (coast)"
+        }
+      ],
+      "objectgroup": {
+        "objects": [
+          {
+            "id": 1,
+            "x": 0,
+            "y": 0,
+            "width": 32,
+            "height": 32,
+            "type": "collision",
+            "visible": true
+          }
+        ]
+      }
+    }
+  ]
+}

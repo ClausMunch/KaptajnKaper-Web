@@ -1,0 +1,75 @@
+PLAYER SHIP — KAPTAJN KAPER I KATTEGAT
+
+Original overhead pixel art: a north-facing, two-masted Danish privateer.
+Dark wooden hull, cream canvas, gold stern, broadside cannons, red-and-white
+Dannebrog. Twenty opaque retro colors plus transparency; no antialiasing,
+water, baked background, or external artwork. Colors are listed in JSON meta.
+
+LAYOUT
+ship_player.png: 256 x 256 RGBA PNG; 4 columns x 4 rows.
+Every frame: 64 x 64, untrimmed, transparent margins, pivot (32, 32).
+Grid origin: upper left. Rectangle: x = column * 64, y = row * 64.
+
+Row  State    Frame names                       Y
+0    normal   ship_player_normal_0 through _3     0
+1    light    ship_player_light_0 through _3     64
+2    medium   ship_player_medium_0 through _3   128
+3    severe   ship_player_severe_0 through _3   192
+
+Column         0       1       2       3
+X              0      64     128     192
+Pose         rest    port   return  starboard
+
+Each state has four distinct frames: a fixed keel, one-pixel rigging lean,
+billowing sail hems and a fluttering ensign. Frame 0 is the static/idle pose.
+Damage accumulates: small sail punctures and hull scratches; larger tears
+and broken rails; shredded canvas and blackened hull breaches. The flag
+remains intact for identification. Damage thresholds are up to game logic.
+
+ANIMATIONS
+ship_player_normal_rock: normal_0, normal_1, normal_2, normal_3
+ship_player_light_rock:  light_0, light_1, light_2, light_3
+ship_player_medium_rock: medium_0, medium_1, medium_2, medium_3
+ship_player_severe_rock: severe_0, severe_1, severe_2, severe_3
+Above sequence entries use the full "ship_player_" prefix in the JSON.
+All animations: 4 fps, 1 second per cycle, repeat -1 (forever).
+Do not yoyo: the four poses already form a seamless rocking cycle.
+
+PHASER 3
+The JSON is a Phaser JSON-hash texture atlas. Its additional "animations"
+object is Phaser AnimationManager.fromJSON data, not an automatically
+registered part of the texture atlas. Load it into the JSON cache as well:
+
+// Scene.preload()
+this.load.atlas('ship_player',
+    'assets/sprites/ship_player.png', 'assets/sprites/ship_player.json');
+this.load.json('ship_player_data', 'assets/sprites/ship_player.json');
+
+// Scene.create()
+const atlas = this.cache.json.get('ship_player_data');
+this.anims.fromJSON(atlas.animations);
+const ship = this.add.sprite(160, 160, 'ship_player', 'ship_player_normal_0');
+ship.setOrigin(0.5, 0.5);
+ship.play('ship_player_normal_rock');
+
+// Damage change (ignoreIfPlaying avoids restarting an unchanged animation):
+ship.play('ship_player_medium_rock', true);
+
+Register these global animation keys only once (e.g. in a boot scene).
+The atlas texture key must be "ship_player", matching the animation data.
+Use pixelArt: true in Phaser's game configuration (nearest-neighbor).
+Native size is 64 x 64 (two 32-pixel tiles); setScale(0.5) gives a 32 x 32
+map icon, sacrificing fine details. Prefer native size/integer upscaling.
+
+DIRECTIONS
+One north-facing set; rotate in the engine around the common center.
+Phaser degrees, clockwise: N 0, NE 45, E 90, SE 135, S 180,
+SW 225, W 270, NW 315. Example: ship.setAngle(90) faces east.
+Use nearest-neighbor filtering; diagonal rotation changes pixel contours.
+Transparent padding leaves room for all eight rotations within 64 x 64.
+
+REGENERATION
+From the repository root on Windows with PowerShell and System.Drawing:
+  .\tools\Generate-PlayerShip.ps1
+No package installation required. The script overwrites only the PNG/JSON
+outputs; its optional -OutputDirectory parameter selects another location.

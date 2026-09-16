@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <defs>
+    <radialGradient id="paper"><stop stop-color="#e6d6a5"/><stop offset=".75" stop-color="#cbb982"/><stop offset="1" stop-color="#998663"/></radialGradient>
+    <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse"><path d="M80 0H0V80" fill="none" stroke="#5a7663" stroke-opacity=".24"/></pattern>
+    <pattern id="grain" width="19" height="23" patternUnits="userSpaceOnUse"><path d="M2 5h3m8 11h2M5 20h1" stroke="#635437" stroke-opacity=".13"/></pattern>
+    <g id="rose" fill="none" stroke="#665b3f"><circle r="91"/><circle r="84"/><circle r="53"/><path d="M0-112V112M-112 0H112M-77-77L77 77M77-77L-77 77"/><path d="M0-102L15-15 102 0 15 15 0 102-15 15-102 0-15-15z" fill="#617564"/><path d="M0-102V0H102M0 102V0H-102" fill="#e5d4a3"/><path d="M-67-67L0-28 67-67 28 0 67 67 0 28-67 67-28 0z"/><circle r="9" fill="#ae7652"/></g>
+  </defs>
+  <path fill="url(#paper)" d="M0 0h1600v1000H0z"/>
+  <path fill="url(#grid)" d="M0 0h1600v1000H0z"/>
+  <g fill="#859477" stroke="#606e51" stroke-width="2" opacity=".62">
+    <path d="M0 0h251l-33 82 37 43-43 51 18 57-74 67 21 54-44 73 15 101-43 48 28 68-37 75 27 59-77 90L0 864z"/>
+    <path d="M1600 0h-202l31 107-47 72 28 37-68 90 25 42-56 80 42 104-45 79 21 63-43 90 28 55-32 91 30 90h188z"/>
+    <path d="M976 906l84-19 48 22 29-4 63 52-43 43H964l-37-36zM168 905l46-35 58 40 73 34-8 56H135z"/>
+  </g>
+  <g stroke="#846e49" opacity=".25" fill="none"><path d="M147 764L1600 120M147 764L1600 444M147 764L1184 0M147 764L414 0M147 764L1500 1000M1457 234L0 61M1457 234L0 523M1457 234L789 1000"/></g>
+  <use href="#rose" x="160" y="756" opacity=".75"/>
+  <use href="#rose" x="1440" y="240" opacity=".6" transform="rotate(18 1440 240)"/>
+  <g fill="#5c6145" font-family="Georgia,serif" font-style="italic" opacity=".65"><text x="77" y="445" font-size="24" transform="rotate(-82 77 445)">Jylland</text><text x="1490" y="635" font-size="24" transform="rotate(82 1490 635)">Sverige</text><text x="690" y="938" font-size="28">Kattegat</text><text x="141" y="632" font-size="17">N</text></g>
+  <path fill="url(#grain)" d="M0 0h1600v1000H0z"/>
+  <path d="M19 19h1562v962H19zM25 25h1550v950H25z" fill="none" stroke="#776247" stroke-opacity=".55"/>
+</svg>

@@ -1,0 +1,303 @@
+{
+  "frames": {
+    "dinghy_row_0": {
+      "frame": {
+        "h": 32,
+        "w": 64,
+        "y": 0,
+        "x": 0
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 64,
+        "y": 0,
+        "x": 0
+      },
+      "sourceSize": {
+        "h": 32,
+        "w": 64
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    "flag_dannebrog_0": {
+      "frame": {
+        "h": 48,
+        "w": 64,
+        "y": 32,
+        "x": 0
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 64,
+        "y": 0,
+        "x": 0
+      },
+      "sourceSize": {
+        "h": 48,
+        "w": 64
+      },
+      "pivot": {
+        "x": 0.1484375,
+        "y": 0.9166666666666666
+      }
+    },
+    "flag_jolly_roger_0": {
+      "frame": {
+        "h": 48,
+        "w": 64,
+        "y": 80,
+        "x": 0
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 64,
+        "y": 0,
+        "x": 0
+      },
+      "sourceSize": {
+        "h": 48,
+        "w": 64
+      },
+      "pivot": {
+        "x": 0.1484375,
+        "y": 0.9166666666666666
+      }
+    },
+    "dinghy_row_1": {
+      "frame": {
+        "h": 32,
+        "w": 64,
+        "y": 0,
+        "x": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 64,
+        "y": 0,
+        "x": 0
+      },
+      "sourceSize": {
+        "h": 32,
+        "w": 64
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    "flag_dannebrog_1": {
+      "frame": {
+        "h": 48,
+        "w": 64,
+        "y": 32,
+        "x": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 64,
+        "y": 0,
+        "x": 0
+      },
+      "sourceSize": {
+        "h": 48,
+        "w": 64
+      },
+      "pivot": {
+        "x": 0.1484375,
+        "y": 0.9166666666666666
+      }
+    },
+    "flag_jolly_roger_1": {
+      "frame": {
+        "h": 48,
+        "w": 64,
+        "y": 80,
+        "x": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 64,
+        "y": 0,
+        "x": 0
+      },
+      "sourceSize": {
+        "h": 48,
+        "w": 64
+      },
+      "pivot": {
+        "x": 0.1484375,
+        "y": 0.9166666666666666
+      }
+    },
+    "dinghy_row_2": {
+      "frame": {
+        "h": 32,
+        "w": 64,
+        "y": 0,
+        "x": 128
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 64,
+        "y": 0,
+        "x": 0
+      },
+      "sourceSize": {
+        "h": 32,
+        "w": 64
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    "flag_dannebrog_2": {
+      "frame": {
+        "h": 48,
+        "w": 64,
+        "y": 32,
+        "x": 128
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 64,
+        "y": 0,
+        "x": 0
+      },
+      "sourceSize": {
+        "h": 48,
+        "w": 64
+      },
+      "pivot": {
+        "x": 0.1484375,
+        "y": 0.9166666666666666
+      }
+    },
+    "flag_jolly_roger_2": {
+      "frame": {
+        "h": 48,
+        "w": 64,
+        "y": 80,
+        "x": 128
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 64,
+        "y": 0,
+        "x": 0
+      },
+      "sourceSize": {
+        "h": 48,
+        "w": 64
+      },
+      "pivot": {
+        "x": 0.1484375,
+        "y": 0.9166666666666666
+      }
+    },
+    "dinghy_row_3": {
+      "frame": {
+        "h": 32,
+        "w": 64,
+        "y": 0,
+        "x": 192
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "h": 32,
+        "w": 64,
+        "y": 0,
+        "x": 0
+      },
+      "sourceSize": {
+        "h": 32,
+        "w": 64
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    "flag_dannebrog_3": {
+      "frame": {
+        "h": 48,
+        "w": 64,
+        "y": 32,
+        "x": 192
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 64,
+        "y": 0,
+        "x": 0
+      },
+      "sourceSize": {
+        "h": 48,
+        "w": 64
+      },
+      "pivot": {
+        "x": 0.1484375,
+        "y": 0.9166666666666666
+      }
+    },
+    "flag_jolly_roger_3": {
+      "frame": {
+        "h": 48,
+        "w": 64,
+        "y": 80,
+        "x": 192
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "h": 48,
+        "w": 64,
+        "y": 0,
+        "x": 0
+      },
+      "sourceSize": {
+        "h": 48,
+        "w": 64
+      },
+      "pivot": {
+        "x": 0.1484375,
+        "y": 0.9166666666666666
+      }
+    }
+  },
+  "meta": {
+    "app": "Kaptajn Kaper boarding pixel-art generator",
+    "version": "1.0",
+    "image": "boarding.png",
+    "format": "RGBA8888",
+    "size": {
+      "h": 128,
+      "w": 256
+    },
+    "scale": "1"
+  }
+}

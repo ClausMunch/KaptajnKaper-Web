@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kaptajn Kaper i Kattegat</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html, body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #243f3b;
+      }
+      body {
+        background: url('/assets/window-chart.svg') center / cover;
+        color: #302f26;
+      }
+      body::after {
+        content: '';
+        position: fixed;
+        inset: 8px;
+        border: 1px solid #66563c;
+        outline: 1px solid #66563c;
+        outline-offset: 4px;
+        pointer-events: none;
+      }
+      #game {
+        position: absolute;
+        inset: 52px 24px 24px;
+        overflow: hidden;
+      }
+      canvas {
+        display: block;
+        box-shadow: 0 0 0 2px #534d37, 0 8px 28px #15262280;
+      }
+      .window-tools {
+        position: absolute;
+        top: 14px;
+        right: 24px;
+        left: 24px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto auto auto;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        font: bold 14px Georgia, serif;
+      }
+      .window-tools span {
+        white-space: nowrap;
+      }
+      select, button, input {
+        font: 14px Georgia, serif;
+        color: #f4e5bb;
+        background: #24483f;
+        border: 1px solid #343e2f;
+        border-radius: 2px;
+        padding: 5px 10px;
+        min-height: 32px;
+        cursor: pointer;
+      }
+      select:focus-visible {
+        outline: 2px solid #8c3f30;
+        outline-offset: 2px;
+      }
+      button:focus-visible, input:focus-visible {
+        outline: 2px solid #8c3f30;
+        outline-offset: 2px;
+      }
+      .player-profile { display: flex; align-items: center; gap: 8px; }
+      #player-name { width: 150px; background: #f1e6c5; color: #263f36; cursor: text; }
+      dialog {
+        margin: auto;
+        width: min(620px, calc(100% - 32px));
+        max-height: calc(100dvh - 32px);
+        overflow: auto;
+        padding: 20px;
+        border: 2px solid #675a3e;
+        border-radius: 4px;
+        background: #e5d7af;
+        color: #253e36;
+        font: 16px Georgia, serif;
+      }
+      dialog::backdrop { background: #102c35b8; }
+      .dialog-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+      .dialog-heading h2 { font-size: 24px; }
+      #close-leaderboard { width: 36px; height: 36px; font-size: 24px; padding: 0; }
+      #leaderboard-status { margin: 18px 0; }
+      table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 16px 0; table-layout: fixed; }
+      th, td { padding: 9px 5px; text-align: right; border-bottom: 1px solid #b6a77e; overflow-wrap: anywhere; }
+      th:nth-child(2), td:nth-child(2) { text-align: left; width: 42%; }
+      th:first-child, td:first-child { width: 7%; }
+      button:disabled { opacity: .6; cursor: wait; }
+      @media (max-width: 720px) {
+        .window-tools { grid-template-columns: minmax(0, 1fr) auto; gap: 8px; }
+        #game { inset: 98px 12px 14px; }
+        #language { grid-column: 2; grid-row: 1; }
+        .player-profile { grid-column: 1; grid-row: 2; }
+        #leaderboard-button { grid-column: 2; grid-row: 2; }
+        #player-name { width: 120px; min-width: 0; }
+      }
+      @media (max-width: 600px) {
+        .window-tools { left: 16px; right: 16px; font-size: 12px; }
+        th, td { padding: 9px 3px; }
+        th { font-size: 12px; }
+        th:nth-child(2), td:nth-child(2) { width: 36%; }
+      }
+      @media (max-height: 500px) and (min-width: 721px) {
+        #game { inset: 46px 12px 12px; }
+        .window-tools { top: 9px; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="window-tools">
+      <span>Kaptajn Kaper i Kattegat</span>
+      <label class="player-profile"><span data-i18n="playerName">Kaptajn</span><input id="player-name" name="nickname" autocomplete="nickname" maxlength="24" required value="Kaper" /></label>
+      <button id="leaderboard-button" type="button" data-i18n="leaderboard">Rangliste</button>
+      <select id="language" aria-label="Sprog">
+        <option value="da" lang="da">Dansk</option>
+        <option value="en" lang="en">English</option>
+      </select>
+    </header>
+    <main id="game"></main>
+    <dialog id="leaderboard" aria-labelledby="leaderboard-title">
+      <div class="dialog-heading">
+        <h2 id="leaderboard-title" data-i18n="leaderboard">Rangliste</h2>
+        <button id="close-leaderboard" type="button" aria-label="Luk ranglisten">&#215;</button>
+      </div>
+      <p id="leaderboard-status" role="status" aria-live="polite"></p>
+      <table hidden>
+        <thead><tr><th scope="col">#</th><th scope="col" data-i18n="leaderboardPlayer">Spiller</th><th scope="col" data-i18n="leaderboardScore">Point</th><th scope="col" data-i18n="leaderboardTurns">Ture</th><th scope="col" data-i18n="leaderboardDifficulty">Niveau</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <button id="refresh-leaderboard" type="button" data-i18n="refreshLeaderboard">Opdatér</button>
+    </dialog>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

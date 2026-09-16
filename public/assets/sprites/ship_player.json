@@ -1,0 +1,538 @@
+﻿{
+  "frames": {
+    "ship_player_normal_0": {
+      "frame": {
+        "h": 64,
+        "x": 0,
+        "y": 0,
+        "w": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "h": 64,
+        "x": 0,
+        "y": 0,
+        "w": 64
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ship_player_normal_1": {
+      "frame": {
+        "h": 64,
+        "x": 64,
+        "y": 0,
+        "w": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "h": 64,
+        "x": 0,
+        "y": 0,
+        "w": 64
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ship_player_normal_2": {
+      "frame": {
+        "h": 64,
+        "x": 128,
+        "y": 0,
+        "w": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "h": 64,
+        "x": 0,
+        "y": 0,
+        "w": 64
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ship_player_normal_3": {
+      "frame": {
+        "h": 64,
+        "x": 192,
+        "y": 0,
+        "w": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "h": 64,
+        "x": 0,
+        "y": 0,
+        "w": 64
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ship_player_light_0": {
+      "frame": {
+        "h": 64,
+        "x": 0,
+        "y": 64,
+        "w": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "h": 64,
+        "x": 0,
+        "y": 0,
+        "w": 64
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ship_player_light_1": {
+      "frame": {
+        "h": 64,
+        "x": 64,
+        "y": 64,
+        "w": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "h": 64,
+        "x": 0,
+        "y": 0,
+        "w": 64
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ship_player_light_2": {
+      "frame": {
+        "h": 64,
+        "x": 128,
+        "y": 64,
+        "w": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "h": 64,
+        "x": 0,
+        "y": 0,
+        "w": 64
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ship_player_light_3": {
+      "frame": {
+        "h": 64,
+        "x": 192,
+        "y": 64,
+        "w": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "h": 64,
+        "x": 0,
+        "y": 0,
+        "w": 64
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ship_player_medium_0": {
+      "frame": {
+        "h": 64,
+        "x": 0,
+        "y": 128,
+        "w": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "h": 64,
+        "x": 0,
+        "y": 0,
+        "w": 64
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ship_player_medium_1": {
+      "frame": {
+        "h": 64,
+        "x": 64,
+        "y": 128,
+        "w": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "h": 64,
+        "x": 0,
+        "y": 0,
+        "w": 64
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ship_player_medium_2": {
+      "frame": {
+        "h": 64,
+        "x": 128,
+        "y": 128,
+        "w": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "h": 64,
+        "x": 0,
+        "y": 0,
+        "w": 64
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ship_player_medium_3": {
+      "frame": {
+        "h": 64,
+        "x": 192,
+        "y": 128,
+        "w": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "h": 64,
+        "x": 0,
+        "y": 0,
+        "w": 64
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ship_player_severe_0": {
+      "frame": {
+        "h": 64,
+        "x": 0,
+        "y": 192,
+        "w": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "h": 64,
+        "x": 0,
+        "y": 0,
+        "w": 64
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ship_player_severe_1": {
+      "frame": {
+        "h": 64,
+        "x": 64,
+        "y": 192,
+        "w": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "h": 64,
+        "x": 0,
+        "y": 0,
+        "w": 64
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ship_player_severe_2": {
+      "frame": {
+        "h": 64,
+        "x": 128,
+        "y": 192,
+        "w": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "h": 64,
+        "x": 0,
+        "y": 0,
+        "w": 64
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "ship_player_severe_3": {
+      "frame": {
+        "h": 64,
+        "x": 192,
+        "y": 192,
+        "w": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "h": 64,
+        "x": 0,
+        "y": 0,
+        "w": 64
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "animations": {
+    "anims": [
+      {
+        "key": "ship_player_normal_rock",
+        "frames": [
+          {
+            "frame": "ship_player_normal_0",
+            "key": "ship_player"
+          },
+          {
+            "frame": "ship_player_normal_1",
+            "key": "ship_player"
+          },
+          {
+            "frame": "ship_player_normal_2",
+            "key": "ship_player"
+          },
+          {
+            "frame": "ship_player_normal_3",
+            "key": "ship_player"
+          }
+        ],
+        "frameRate": 4,
+        "repeat": -1
+      },
+      {
+        "key": "ship_player_light_rock",
+        "frames": [
+          {
+            "frame": "ship_player_light_0",
+            "key": "ship_player"
+          },
+          {
+            "frame": "ship_player_light_1",
+            "key": "ship_player"
+          },
+          {
+            "frame": "ship_player_light_2",
+            "key": "ship_player"
+          },
+          {
+            "frame": "ship_player_light_3",
+            "key": "ship_player"
+          }
+        ],
+        "frameRate": 4,
+        "repeat": -1
+      },
+      {
+        "key": "ship_player_medium_rock",
+        "frames": [
+          {
+            "frame": "ship_player_medium_0",
+            "key": "ship_player"
+          },
+          {
+            "frame": "ship_player_medium_1",
+            "key": "ship_player"
+          },
+          {
+            "frame": "ship_player_medium_2",
+            "key": "ship_player"
+          },
+          {
+            "frame": "ship_player_medium_3",
+            "key": "ship_player"
+          }
+        ],
+        "frameRate": 4,
+        "repeat": -1
+      },
+      {
+        "key": "ship_player_severe_rock",
+        "frames": [
+          {
+            "frame": "ship_player_severe_0",
+            "key": "ship_player"
+          },
+          {
+            "frame": "ship_player_severe_1",
+            "key": "ship_player"
+          },
+          {
+            "frame": "ship_player_severe_2",
+            "key": "ship_player"
+          },
+          {
+            "frame": "ship_player_severe_3",
+            "key": "ship_player"
+          }
+        ],
+        "frameRate": 4,
+        "repeat": -1
+      }
+    ]
+  },
+  "meta": {
+    "app": "Kaptajn Kaper original pixel-art generator",
+    "version": "1.0",
+    "image": "ship_player.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 256,
+      "h": 256
+    },
+    "scale": "1",
+    "facing": "north",
+    "grid": {
+      "columns": 4,
+      "cellWidth": 64,
+      "rows": 4,
+      "cellHeight": 64
+    },
+    "rowOrder": [
+      "normal",
+      "light",
+      "medium",
+      "severe"
+    ],
+    "columnOrder": [
+      "rest",
+      "port",
+      "return",
+      "starboard"
+    ],
+    "palette": [
+      "#172434",
+      "#293747",
+      "#526070",
+      "#94A6AC",
+      "#50352F",
+      "#80503A",
+      "#AB7047",
+      "#C9935B",
+      "#E3B779",
+      "#9A703C",
+      "#E2B85B",
+      "#FFE39A",
+      "#8C9185",
+      "#BABCA5",
+      "#E6DFC0",
+      "#FFF4D6",
+      "#842E3A",
+      "#CB4450",
+      "#FFFFFF",
+      "#362B32",
+      "#FF4444"
+    ],
+    "animationImport": "scene.anims.fromJSON(atlasData.animations)"
+  }
+}

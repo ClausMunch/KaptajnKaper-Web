@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="32" viewBox="0 0 640 32">
+  <defs>
+    <pattern id="paper" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M1 2h1m4 4h1" stroke="#e9dba3" stroke-opacity=".12"/></pattern>
+    <g id="land"><path d="M0 0h32v32H0z" fill="#8c9b70"/><path d="M0 0h32v32H0z" fill="url(#paper)"/><path d="M12 18l3-2 4 1m-9-9 3-1" stroke="#596f54" stroke-opacity=".24" fill="none"/></g>
+    <g id="shore"><path d="M0 0h32v4l-8 1-7-1-8 2-9-1z" fill="#d6c796"/><path d="M0 0h32v2l-8 1-7-1-8 2-9-1z" fill="#5c9290"/><path d="M0 1h8l9-1h15" stroke="#bbcfb3" stroke-width=".7" fill="none"/></g>
+    <g id="north"><use href="#shore"/></g>
+    <g id="east"><use href="#shore" transform="rotate(90 16 16)"/></g>
+    <g id="south"><use href="#shore" transform="rotate(180 16 16)"/></g>
+    <g id="west"><use href="#shore" transform="rotate(270 16 16)"/></g>
+  </defs>
+  <path d="M0 0h128v32H0z" fill="#32696d"/>
+  <g fill="none" stroke="#81afaa" stroke-width=".7" opacity=".42"><path d="M6 10q3 2 6 0t6 0M19 24h6M42 22q3 2 6 0t6 0M55 7h4M71 8h7M81 24q3 2 6 0M105 15q3 2 6 0t6 0"/></g>
+  <g transform="translate(128)"><use href="#land"/></g>
+  <g transform="translate(160)"><use href="#land"/><use href="#north"/></g>
+  <g transform="translate(192)"><use href="#land"/><use href="#east"/></g>
+  <g transform="translate(224)"><use href="#land"/><use href="#north"/><use href="#east"/></g>
+  <g transform="translate(256)"><use href="#land"/><use href="#south"/></g>
+  <g transform="translate(288)"><use href="#land"/><use href="#north"/><use href="#south"/></g>
+  <g transform="translate(320)"><use href="#land"/><use href="#east"/><use href="#south"/></g>
+  <g transform="translate(352)"><use href="#land"/><use href="#north"/><use href="#east"/><use href="#south"/></g>
+  <g transform="translate(384)"><use href="#land"/><use href="#west"/></g>
+  <g transform="translate(416)"><use href="#land"/><use href="#north"/><use href="#west"/></g>
+  <g transform="translate(448)"><use href="#land"/><use href="#east"/><use href="#west"/></g>
+  <g transform="translate(480)"><use href="#land"/><use href="#north"/><use href="#east"/><use href="#west"/></g>
+  <g transform="translate(512)"><use href="#land"/><use href="#south"/><use href="#west"/></g>
+  <g transform="translate(544)"><use href="#land"/><use href="#north"/><use href="#south"/><use href="#west"/></g>
+  <g transform="translate(576)"><use href="#land"/><use href="#east"/><use href="#south"/><use href="#west"/></g>
+  <g transform="translate(608)"><use href="#land"/><use href="#north"/><use href="#east"/><use href="#south"/><use href="#west"/></g>
+</svg>

@@ -1,0 +1,459 @@
+{
+  "frames": {
+    "handelsmand_topview": {
+      "frame": {
+        "x": 0,
+        "y": 8,
+        "w": 64,
+        "h": 112
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 64,
+        "h": 112
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 112
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "handelsmand_sideview": {
+      "frame": {
+        "x": 72,
+        "y": 8,
+        "w": 176,
+        "h": 112
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 176,
+        "h": 112
+      },
+      "sourceSize": {
+        "w": 176,
+        "h": 112
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    "troppetransport_topview": {
+      "frame": {
+        "x": 256,
+        "y": 8,
+        "w": 64,
+        "h": 112
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 64,
+        "h": 112
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 112
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "troppetransport_sideview": {
+      "frame": {
+        "x": 328,
+        "y": 8,
+        "w": 176,
+        "h": 112
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 176,
+        "h": 112
+      },
+      "sourceSize": {
+        "w": 176,
+        "h": 112
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    "kanonbaad_topview": {
+      "frame": {
+        "x": 0,
+        "y": 136,
+        "w": 64,
+        "h": 112
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 64,
+        "h": 112
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 112
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "kanonbaad_sideview": {
+      "frame": {
+        "x": 72,
+        "y": 136,
+        "w": 176,
+        "h": 112
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 176,
+        "h": 112
+      },
+      "sourceSize": {
+        "w": 176,
+        "h": 112
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    "galease_topview": {
+      "frame": {
+        "x": 256,
+        "y": 136,
+        "w": 64,
+        "h": 112
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 64,
+        "h": 112
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 112
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "galease_sideview": {
+      "frame": {
+        "x": 328,
+        "y": 136,
+        "w": 176,
+        "h": 112
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 176,
+        "h": 112
+      },
+      "sourceSize": {
+        "w": 176,
+        "h": 112
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    "brig_topview": {
+      "frame": {
+        "x": 0,
+        "y": 264,
+        "w": 64,
+        "h": 112
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 64,
+        "h": 112
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 112
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "brig_sideview": {
+      "frame": {
+        "x": 72,
+        "y": 264,
+        "w": 176,
+        "h": 112
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 176,
+        "h": 112
+      },
+      "sourceSize": {
+        "w": 176,
+        "h": 112
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    "skonnert_topview": {
+      "frame": {
+        "x": 256,
+        "y": 264,
+        "w": 64,
+        "h": 112
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 64,
+        "h": 112
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 112
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "skonnert_sideview": {
+      "frame": {
+        "x": 328,
+        "y": 264,
+        "w": 176,
+        "h": 112
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 176,
+        "h": 112
+      },
+      "sourceSize": {
+        "w": 176,
+        "h": 112
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    "orlogsmand_topview": {
+      "frame": {
+        "x": 0,
+        "y": 392,
+        "w": 64,
+        "h": 112
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 64,
+        "h": 112
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 112
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "orlogsmand_sideview": {
+      "frame": {
+        "x": 72,
+        "y": 392,
+        "w": 176,
+        "h": 112
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 176,
+        "h": 112
+      },
+      "sourceSize": {
+        "w": 176,
+        "h": 112
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    },
+    "soeroverskib_topview": {
+      "frame": {
+        "x": 256,
+        "y": 392,
+        "w": 64,
+        "h": 112
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 64,
+        "h": 112
+      },
+      "sourceSize": {
+        "w": 64,
+        "h": 112
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "soeroverskib_sideview": {
+      "frame": {
+        "x": 328,
+        "y": 392,
+        "w": 176,
+        "h": 112
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 176,
+        "h": 112
+      },
+      "sourceSize": {
+        "w": 176,
+        "h": 112
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.8125
+      }
+    }
+  },
+  "meta": {
+    "app": "KaptajnKaper enemy ship asset generator",
+    "version": "1.0",
+    "image": "ships_enemy.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 512,
+      "h": 512
+    },
+    "scale": "1",
+    "palette": [
+      "#151525",
+      "#29283E",
+      "#48465E",
+      "#77788B",
+      "#ADBBC5",
+      "#FFF4DA",
+      "#E4D5AF",
+      "#B5A080",
+      "#392D35",
+      "#674335",
+      "#956044",
+      "#BE8551",
+      "#F2C66D",
+      "#B63E55",
+      "#EE6875",
+      "#682D49",
+      "#65DAE0",
+      "#308F9C",
+      "#294966",
+      "#4F82AD",
+      "#CE63BA",
+      "#794E91",
+      "#507C68",
+      "#92B782"
+    ],
+    "ships": [
+      {
+        "id": "handelsmand",
+        "name": "Handelsmand"
+      },
+      {
+        "id": "troppetransport",
+        "name": "Troppetransport"
+      },
+      {
+        "id": "kanonbaad",
+        "name": "Kanonbåd"
+      },
+      {
+        "id": "galease",
+        "name": "Galease"
+      },
+      {
+        "id": "brig",
+        "name": "Brig"
+      },
+      {
+        "id": "skonnert",
+        "name": "Skonnert"
+      },
+      {
+        "id": "orlogsmand",
+        "name": "Orlogsmand"
+      },
+      {
+        "id": "soeroverskib",
+        "name": "Sørøverskib"
+      }
+    ]
+  }
+}

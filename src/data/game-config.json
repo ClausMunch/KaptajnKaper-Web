@@ -1,0 +1,80 @@
+{
+  "version": "1.0",
+  "title": "Kaptajn Kaper i Kattegat - Game Data",
+  "harbors": [
+    {
+      "id": 2,
+      "name": "København",
+      "position": { "x": 25, "y": 12 },
+      "isCapital": true,
+      "description": "Main port and prize delivery point"
+    },
+    {
+      "id": 3,
+      "name": "Helsingør",
+      "position": { "x": 25, "y": 7 },
+      "isCapital": false,
+      "description": "Northern port on the Sound"
+    },
+    {
+      "id": 4,
+      "name": "Hundested",
+      "position": { "x": 18, "y": 8 },
+      "isCapital": false,
+      "description": "Western port"
+    },
+    {
+      "id": 5,
+      "name": "Grenå",
+      "position": { "x": 9, "y": 1 },
+      "isCapital": false,
+      "description": "Southern port"
+    },
+    {
+      "id": 6,
+      "name": "Ebeltoft",
+      "position": { "x": 7, "y": 4 },
+      "isCapital": false,
+      "description": "Eastern port"
+    },
+    {
+      "id": 7,
+      "name": "Kalundborg",
+      "position": { "x": 11, "y": 13 },
+      "isCapital": false,
+      "description": "Western port"
+    },
+    {
+      "id": 8,
+      "name": "Mølle",
+      "position": { "x": 24, "y": 3 },
+      "isCapital": false,
+      "description": "Northern port"
+    }
+  ],
+  "initialResources": {
+    "crew": 200,
+    "grain": 30,
+    "rigsdaler": 600,
+    "cannons": 4,
+    "hullRepair": 200,
+    "gems": 0
+  },
+  "prices": {
+    "grain": [10, 8, 100, 5, 50],
+    "cannon": 200,
+    "crewPerPerson": 50,
+    "repairPerPoint": 10,
+    "gemsSell": 100
+  },
+  "winConditions": {
+    "pointsRequired": 500,
+    "turnsLimit": 325
+  },
+  "crewCapacity": 500,
+  "maxGrain": 700,
+  "maxRigsdaler": 30000,
+  "maxCannons": 150,
+  "hullRepairMaxPoints": 200,
+  "combatNotes": "Korn forbrugning per turn, damage calculations, crew morale mechanics"
+}
