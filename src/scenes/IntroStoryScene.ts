@@ -3,13 +3,19 @@ import { createInitialGameState } from '../game/GameState'
 import { getPlayerName } from '../leaderboard'
 import { t } from '../i18n'
 import { localizedText } from '../utils/LocalizedText'
+import type { WorldMode } from '../data'
 
 /**
  * IntroStoryScene - Game introduction and story (Komtesse Julie, kaperbrev)
  */
 export class IntroStoryScene extends Phaser.Scene {
+  private worldMode: WorldMode = 'classic'
   constructor() {
     super({ key: 'IntroStoryScene' })
+  }
+
+  init(data: { worldMode?: WorldMode } = {}) {
+    this.worldMode = data.worldMode ?? (this.registry.get('worldMode') === 'expanded' ? 'expanded' : 'classic')
   }
 
   create() {
@@ -38,7 +44,7 @@ export class IntroStoryScene extends Phaser.Scene {
       .setInteractive({ useHandCursor: true })
       .on('pointerdown', () => {
         const name = getPlayerName()
-        if (name) this.scene.start('WorldMapScene', { gameState: createInitialGameState(1, name) })
+        if (name) this.scene.start('WorldMapScene', { gameState: createInitialGameState(1, name, this.worldMode) })
       })
     
     continueBtn.on('pointerover', () => continueBtn.setStyle({ backgroundColor: '#555' }))

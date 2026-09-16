@@ -7,6 +7,9 @@ import gameConfig from './game-config.json'
 import enemyData from './enemies.json'
 import mapData from './map.json'
 import storyData from './story.json'
+import { expandedMap, expandedHarbors } from './expandedMap'
+
+export type WorldMode = 'classic' | 'expanded'
 
 export interface Harbor {
   id: number
@@ -34,14 +37,19 @@ export interface MapTile {
   y: number
 }
 
-export const getHarbors = (): Harbor[] => gameConfig.harbors as Harbor[]
+export const getHarbors = (mode: WorldMode = 'classic'): Harbor[] => mode === 'expanded'
+  ? [...gameConfig.harbors.map(port => {
+    const location = expandedMap.harborLocations.find(location => location.harborId === port.id)!
+    return { ...port, position: { x: location.x, y: location.y } }
+  }), ...expandedHarbors]
+  : gameConfig.harbors as Harbor[]
 
 export const getHarborById = (id: number): Harbor | undefined => {
-  return gameConfig.harbors.find((h) => (h as Harbor).id === id) as Harbor | undefined
+  return gameConfig.harbors.find(port => port.id === id) ?? expandedHarbors.find(port => port.id === id)
 }
 
 export const getHarborByName = (name: string): Harbor | undefined => {
-  return gameConfig.harbors.find((h) => (h as Harbor).name === name) as Harbor | undefined
+  return gameConfig.harbors.find(port => port.name === name) ?? expandedHarbors.find(port => port.name === name)
 }
 
 export const getEnemyTypes = (): Enemy[] => enemyData.enemyTypes as Enemy[]
@@ -55,7 +63,7 @@ export const getRandomEnemy = (): Enemy => {
   return enemies[Math.floor(Math.random() * enemies.length)]
 }
 
-export const getMapData = () => mapData
+export const getMapData = (mode: WorldMode = 'classic') => mode === 'expanded' ? expandedMap : mapData
 
 export const getStoryData = () => storyData
 

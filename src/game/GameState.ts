@@ -3,7 +3,10 @@
  * Separate from rendering logic for testability and modularity
  */
 
+import { getMapData, type WorldMode } from '../data'
+
 export interface GameState {
+  worldMode?: WorldMode
   runId: string
   playerName: string
   // Resources
@@ -36,7 +39,8 @@ export interface GameState {
   seaContacts?: Array<{ x: number; y: number } & ({ kind: 'enemy'; enemyId: number } | { kind: 'storm' })>
 }
 
-export const createInitialGameState = (difficulty: number = 1, playerName: string = 'Kaper'): GameState => ({
+export const createInitialGameState = (difficulty: number = 1, playerName: string = 'Kaper', worldMode: WorldMode = 'classic'): GameState => ({
+  worldMode,
   runId: crypto.randomUUID(),
   playerName,
   crew: 15,
@@ -52,7 +56,7 @@ export const createInitialGameState = (difficulty: number = 1, playerName: strin
   turnsElapsed: 0,
   hasJack: true,
   difficulty: Math.max(0, Math.min(4, difficulty)),
-  currentMapTile: { x: 15, y: 7 }, // Center of map
+  currentMapTile: { ...getMapData(worldMode).startPosition },
 })
 
 export const getHullDamageLevel = (state: GameState): 0 | 1 | 2 | 3 => {

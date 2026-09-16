@@ -93,8 +93,7 @@ const LAND_TILES = new Set<number>([8, 9, 10, 11, 12, 13, 14, 15])
 /**
  * Check if coordinates are within map bounds
  */
-export function isInBounds(x: number, y: number): boolean {
-  const mapData = getMapData()
+export function isInBounds(x: number, y: number, mapData = getMapData()): boolean {
   return x >= 0 && x < mapData.dimensions.width && y >= 0 && y < mapData.dimensions.height
 }
 
@@ -115,20 +114,16 @@ export function isWater(x: number, y: number, tileData?: number[][]): boolean {
 /**
  * Check if a tile is land (collision/impassable)
  */
-export function isLand(x: number, y: number): boolean {
-  if (!isInBounds(x, y)) return false
-
-  const mapData = getMapData()
+export function isLand(x: number, y: number, mapData = getMapData()): boolean {
+  if (!isInBounds(x, y, mapData)) return false
   return mapData.landTiles.some((tile: number[]) => tile[0] === x && tile[1] === y)
 }
 
 /**
  * Check if a tile is a harbor
  */
-export function isHarbor(x: number, y: number): { harborId: number; name: string } | null {
-  if (!isInBounds(x, y)) return null
-
-  const mapData = getMapData()
+export function isHarbor(x: number, y: number, mapData = getMapData()): { harborId: number; name: string } | null {
+  if (!isInBounds(x, y, mapData)) return null
   const harbor = mapData.harborLocations.find(
     (loc: { x: number; y: number; harborId: number; name: string }) => loc.x === x && loc.y === y
   )

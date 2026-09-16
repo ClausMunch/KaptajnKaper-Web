@@ -1,6 +1,7 @@
 import Phaser from 'phaser'
 import { t } from '../i18n'
-import { localizedText } from '../utils/LocalizedText'
+import { localizedText, setLocalizedText } from '../utils/LocalizedText'
+import type { WorldMode } from '../data'
 
 /**
  * TitleScene - Main title screen and menu
@@ -17,6 +18,8 @@ export class TitleScene extends Phaser.Scene {
   create() {
     const { width, height } = this.scale
     const centerX = width / 2
+    let worldMode: WorldMode = this.registry.get('worldMode') === 'expanded' ? 'expanded' : 'classic'
+    const subtitleSource = () => t(worldMode === 'expanded' ? 'expandedSubtitle' : 'classicSubtitle')
     this.textures.get('title-harbor').setFilter(Phaser.Textures.FilterMode.LINEAR)
     this.add.image(centerX, height / 2, 'title-harbor').setDisplaySize(width, height)
 
@@ -32,11 +35,15 @@ export class TitleScene extends Phaser.Scene {
     }
     title.add(this.add.text(0, -46, 'Kaptajn', { ...titleStyle, fontSize: '74px' }).setOrigin(0.5).setAngle(-3))
     title.add(this.add.text(0, 38, 'Kaper', { ...titleStyle, fontSize: '112px' }).setOrigin(0.5).setAngle(-3))
-    title.add(this.add.text(0, 132, 'i Kattegat', {
+    const subtitle = localizedText(this, 0, 132, subtitleSource, {
       ...titleStyle, fontSize: '37px', fontStyle: 'bold italic',
-    }).setOrigin(0.5))
+    }).setOrigin(0.5).setName('edition-subtitle')
+    const echo = localizedText(this, 0, 132, subtitleSource, {
+      ...titleStyle, fontSize: '37px', fontStyle: 'bold italic', color: '#bcefe8',
+    }).setOrigin(0.5).setAlpha(0).setName('edition-echo')
+    title.add([echo, subtitle])
 
-    const ornament = this.add.graphics().lineStyle(1, 0xc2bb8e, 0.75)
+    const ornament = this.add.graphics().setY(38).lineStyle(1, 0xc2bb8e, 0.75)
     ornament.lineBetween(centerX - 150, 319, centerX - 108, 319)
     ornament.lineBetween(centerX + 108, 319, centerX + 150, 319)
     ornament.fillStyle(0xe4c98e).fillTriangle(centerX - 161, 319, centerX - 153, 315, centerX - 153, 323)
@@ -47,7 +54,46 @@ export class TitleScene extends Phaser.Scene {
       shadow: { offsetX: 0, offsetY: 2, color: '#183e42', fill: true, blur: 3 },
     }).setOrigin(0.5)
 
-    const menu = this.add.container(centerX, 507)
+    const options = (['classic', 'expanded'] as const).map((mode, index) => {
+      const position = centerX + (index === 0 ? -142 : 142)
+      const background = this.add.rectangle(position, 442, 276, 42, 0x123c40).setStrokeStyle(1, 0xc9af75)
+      const label = localizedText(this, position, 442, () => t(mode === 'classic' ? 'classicMode' : 'expandedMode'), {
+        fontFamily: 'Georgia, serif', fontSize: '19px', color: '#ffe4a0',
+      }).setOrigin(0.5)
+      background.setName(`mode-${mode}`).setInteractive({ useHandCursor: true })
+      background.on('pointerdown', () => select(mode))
+      return { mode, background, label }
+    })
+    const select = (mode: WorldMode) => {
+      const changed = worldMode !== mode
+      worldMode = mode
+      this.registry.set('worldMode', mode)
+      setLocalizedText(subtitle, subtitleSource)
+      setLocalizedText(echo, subtitleSource)
+      if (changed) {
+        this.tweens.killTweensOf([subtitle, echo])
+        subtitle.setPosition(0, 132).setScale(1).setAlpha(1).setAngle(0)
+        echo.setPosition(0, 132).setScale(1).setAlpha(0)
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          const direction = mode === 'expanded' ? 1 : -1
+          subtitle.setX(direction * 48).setScale(0.82).setAlpha(0.3).setAngle(direction * 3)
+          echo.setAlpha(0.6)
+          this.tweens.add({ targets: subtitle, x: 0, scaleX: 1, scaleY: 1, alpha: 1, angle: 0, duration: 520, ease: 'Back.Out' })
+          this.tweens.add({ targets: echo, scaleX: 1.25, scaleY: 1.25, alpha: 0, duration: 480, ease: 'Cubic.Out' })
+        }
+      }
+      for (const option of options) {
+        option.background.setFillStyle(option.mode === mode ? 0xe2cd91 : 0x123c40)
+        option.label.setColor(option.mode === mode ? '#183d40' : '#ffe4a0')
+      }
+    }
+    select(worldMode)
+    const chooseClassic = () => select('classic')
+    const chooseExpanded = () => select('expanded')
+    this.input.keyboard?.on('keydown-LEFT', chooseClassic)
+    this.input.keyboard?.on('keydown-RIGHT', chooseExpanded)
+
+    const menu = this.add.container(centerX, 520)
     const buttonShape = this.add.graphics()
     buttonShape.fillStyle(0x102f36, 0.92)
     buttonShape.fillPoints([
@@ -73,7 +119,7 @@ export class TitleScene extends Phaser.Scene {
       starting = true
       startBtn.disableInteractive()
       this.cameras.main.fadeOut(350, 9, 34, 40)
-      this.cameras.main.once('camerafadeoutcomplete', () => this.scene.start('IntroStoryScene'))
+      this.cameras.main.once('camerafadeoutcomplete', () => this.scene.start('IntroStoryScene', { worldMode }))
     }
     startBtn.on('pointerdown', start)
     this.input.keyboard?.on('keydown-ENTER', start)
@@ -81,6 +127,8 @@ export class TitleScene extends Phaser.Scene {
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
       this.input.keyboard?.off('keydown-ENTER', start)
       this.input.keyboard?.off('keydown-SPACE', start)
+      this.input.keyboard?.off('keydown-LEFT', chooseClassic)
+      this.input.keyboard?.off('keydown-RIGHT', chooseExpanded)
     })
 
     localizedText(this, centerX, height - 44, () => t('titleLocation'), {

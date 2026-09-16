@@ -4,9 +4,9 @@ A playable, work-in-progress web remake of Peter Ole Frederiksen's 1985 Danish p
 
 ## Screenshots
 
-![Title screen with an illustrated harbor and sailing ship](screenshot_001.png)
+![Title screen with Expanded Seas selected and the edition-specific subtitle above an illustrated harbor](screenshot_001.png)
 
-![Kattegat world map showing harbors, enemy ships, storms, and player resources](screenshot_002.png)
+![Expanded Seas chart showing 18 harbors across Norway, Sweden, Denmark and the Baltic, with offshore storm zones and player resources](screenshot_002.png)
 
 ## Project Status
 
@@ -16,7 +16,7 @@ The core sailing, trading, combat, and leaderboard flows are implemented. This i
 | --- | --- |
 | Presentation | Illustrated title screen, antique-chart surround, animated ship sprites and damage states, scaled 1024x768 game canvas |
 | Languages | Danish and English, switchable during play |
-| Navigation | 30x15 Kattegat map, coastline collision, seven harbors, eight-direction keyboard movement |
+| Navigation | Classic 30x15 Kattegat map with seven harbors or optional 60x30 Expanded Seas DLC with 18 harbors; coastline collision and eight-direction keyboard movement |
 | Sea encounters | Eight enemy ship types and moving storms; contacts advance on sailing turns, enemies chase nearby players, storms damage the hull |
 | Harbors | Entry or decline, trading, crew hiring, ship repairs, quantity input, and return to the previous sea position |
 | Cannon combat | Interactive bearing/elevation aim, wind and range correction, shot feedback, reload lock, closing range, and retreat |
@@ -26,6 +26,25 @@ The core sailing, trading, combat, and leaderboard flows are implemented. This i
 | Deployment | Docker development stack and production container serving the game and API |
 
 New games currently start with **15 crew, 30 grain, 500 rigsdaler, four cannons, and 100 hull**, at difficulty `1`. These live defaults are defined in [src/game/GameState.ts](src/game/GameState.ts), not the historical values in the extracted data notes.
+
+## Expanded Seas DLC
+
+Choose **Kattegat** or **Expanded Seas DLC** on the title screen before setting sail. Left/right arrow keys also change the selection. This selects the next voyage; an active voyage keeps its map when returning from harbors and battles.
+
+The optional built-in mode uses a stylized 60x30 chart, four times the classic map's area, covering the North Sea, southern Norway, Denmark, southern Sweden, and the Baltic. It adds eleven trading ports alongside the original seven:
+
+| Region | Additional harbors |
+| --- | --- |
+| Norway | Oslo, Larvik, Kristiansand |
+| Sweden | Göteborg, Karlskrona, Stockholm, Visby |
+| Baltic coast | Tallinn, Riga, Klaipėda, Gdańsk |
+
+All new harbors support the existing trading, recruitment, and repair services. Positions are simplified to fit the tile grid; this is not a navigational chart.
+
+- Classic mode retains three single-tile storms and its original damage rules.
+- Expanded mode has nine storms. More than two tiles from land, they grow into visible 5x5-tile zones and move every two sailing turns instead of three.
+- At normal difficulty, offshore storms deal 20-37 hull damage per exposed sailing turn, compared with 7-14 from coastal storms. Overlapping storms apply only the strongest hit that turn.
+- Storms shrink and weaken near land. Larger hits produce stronger screen shake and lightning feedback.
 
 ## Run With Docker
 
@@ -60,7 +79,7 @@ The leaderboard requires a running API and persistent database storage. Uploadin
 With the development containers running:
 
 ```bash
-docker compose exec -T kaptajn-kaper-dev npx tsx --test scripts/localization.test.ts scripts/map.test.ts scripts/sea-encounters.test.ts scripts/interactive-combat.test.ts
+docker compose exec -T kaptajn-kaper-dev npx tsx --test scripts/localization.test.ts scripts/map.test.ts scripts/sea-encounters.test.ts scripts/interactive-combat.test.ts scripts/expanded-seas.test.ts
 docker compose exec -T -e NODE_OPTIONS=--max-old-space-size=3072 kaptajn-kaper-dev npm run build
 ```
 
@@ -91,7 +110,7 @@ Repository-wide `npm run type-check` and `npm run lint` are available as scripts
 | [tools/](tools/) | PowerShell sprite generators |
 | [original-source/](original-source/) | Preserved BASIC source and original title data |
 
-The live map is generated from [src/data/map.json](src/data/map.json). Legacy TMJ files remain in the repository but are not the active map source. Some asset sources are duplicated under [assets/](assets/) for the generation workflow.
+The classic map is generated from [src/data/map.json](src/data/map.json); the expanded chart and regional harbors are defined in [src/data/expandedMap.ts](src/data/expandedMap.ts). Legacy TMJ files remain in the repository but are not the active map source. Some asset sources are duplicated under [assets/](assets/) for the generation workflow.
 
 ## Remaining Work
 
