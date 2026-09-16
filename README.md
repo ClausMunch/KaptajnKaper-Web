@@ -2,6 +2,12 @@
 
 A playable, work-in-progress web remake of Peter Ole Frederiksen's 1985 Danish privateer game. Built with Phaser 3, TypeScript, and Vite, with a Node.js/SQLite leaderboard.
 
+## Screenshots
+
+![Title screen with an illustrated harbor and sailing ship](screenshot_001.png)
+
+![Kattegat world map showing harbors, enemy ships, storms, and player resources](screenshot_002.png)
+
 ## Project Status
 
 The core sailing, trading, combat, and leaderboard flows are implemented. This is a playable prototype, not a finished or fully faithful recreation of the original game.
